@@ -1,0 +1,37 @@
+
+<button class="back" routerLink="/">< Turn Back</button>
+
+<mat-spinner *ngIf="!elements.length"></mat-spinner>
+
+<div *ngIf="elements.length">
+    <h2>{{elements[0]["amiiboSeries"]}} Detailed</h2>
+
+    <div *ngFor="let element of elements" >
+
+
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{element.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{element.character}}'s   {{element.type}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p> <strong>Character:</strong> {{element.character}}</p>
+              <p><strong>Type:</strong> {{element.type}}</p>
+              <p><strong>Releases:</strong></p>
+              <ul>
+                  <li *ngIf="element.release.au"> <strong>Australia: </strong> {{element.release.au}}</li>
+                  <li *ngIf="element.release.eu"> <strong>Europe: </strong> {{element.release.eu}}</li>
+                  <li *ngIf="element.release.jp"> <strong>Japan: </strong> {{element.release.jp}}</li>
+                  <li *ngIf="element.release.na"> <strong>North America: </strong> {{element.release.na}}</li>
+              </ul>
+
+              <img src="{{element.image}}" alt="{{element.name}}">
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+</div>
+
